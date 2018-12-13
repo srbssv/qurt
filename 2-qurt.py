@@ -44,7 +44,7 @@ for c in cont:
 # Заполняем список выбывших по Контингенту учеников
 for c in cont:
     for a in ad:
-        if (c["SamAccountName"] == a["SamAccountName"]) and (c["Status"] == read_data.EXPORTED_TO_NIS):
+        if (c["SamAccountName"] == a["SamAccountName"]) and ((c["Status"] == read_data.EXPORTED_TO_NIS) or (c["Status"] == read_data.GONE1) or (c["Status"] == read_data.GONE2)):
             Exported_List.append(c)
             break
 
@@ -98,5 +98,5 @@ xl_out.save("STUDENTS_DETAILED.xlsx")
 xl_out.close()
 print("Таблица с изменениями в ActiveDirectory и Контингенте сохранены в файле STUDENTS_DETAILED.xlsx")
 # Сохраняем все это счастье в CSV-файлы
-print("Ешь құрт!")
+print("Ешь курт!")
 u = input("Нажми Enter, и вали отсюда")
