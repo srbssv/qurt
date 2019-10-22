@@ -124,7 +124,7 @@ def write_to_csv_translated(data, filename, givenname, surname, iin):
         c.writerow(keys)
         for item in data:
             row = []
-            if type(item)!=list:
+            if type(item) != list:
                 item["Translated"] = translate_that_shit(item[surname]) + "_" + convert_name(item[givenname]) + item[iin][:4]
                 for key in keys:
                     row.append(item[key])

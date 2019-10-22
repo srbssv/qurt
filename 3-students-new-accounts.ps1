@@ -1,15 +1,15 @@
-Import-Module ActiveDirectory
+п»їImport-Module ActiveDirectory
 
 $ScriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 
-$FileName = Read-Host("Имя файла:")
-
+$FileName = Read-Host("РРјСЏ С„Р°Р№Р»Р°:")
+$Pass = Read-Host("РџСЂРёРґСѓРјР°Р№ РїР°СЂРѕР»СЊ:")
 $Path = $ScriptPath + "\" + $FileName + ".csv"
 $users = Import-CSV $Path -Delimiter ";"
 $Group = Get-ADGroup -Filter {Name -like "students_all*"} -SearchBase "OU=Security, OU=Groups, OU=ALM-FM, dc=nis, dc=edu, dc=kz"
-$Pass = "Qqwerty1!"
+#$Pass = "Qqwerty1!"
 $users
-#  Создание и распределение учеников
+#
 foreach ($u in $users){
         $OU = $u.grade
         $iin = $u.SamAccountName

@@ -6,14 +6,7 @@ from read_data import read_contingent, read_AD
 from openpyxl import Workbook
 
 # Словарь переведенных между классами
-ChangedClass_Dict = {
-    'SamAccountName': '',
-    'GivenName': '',
-    'Surname': '',
-    'LastGrade': '',
-    'NewGrade' : '',
-    'UserPrincipalName': ''
-}
+
 
 # Список для отсутствующих в ActiveDirectory учеников
 Absent_List = []
@@ -49,15 +42,16 @@ for c in cont:
             break
 
 # Заполняем список переведенных между классами
-keys = []
-for key in ChangedClass_Dict.keys():
-    keys.append(key)
+#keys = []
+#for key in ChangedClass_Dict.keys():
+    #keys.append(key)
 for c in cont:
     for a in ad:
+        #for k in keys:
+           # ChangedClass_Dict[k] = ''
         if (c["SamAccountName"] == a["SamAccountName"]):
             if (c["Grade"] != a["Description"]) and (c["Status"] == read_data.STILL_STUDYING):
-                for k in keys:
-                    ChangedClass_Dict[k] = ''
+                ChangedClass_Dict = {}
                 ChangedClass_Dict["SamAccountName"] = c["SamAccountName"]
                 ChangedClass_Dict["GivenName"] = c["GivenName"]
                 ChangedClass_Dict["Surname"] = c["Surname"]
