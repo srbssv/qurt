@@ -76,9 +76,15 @@ def translate_that_shit(s, add_vowel=False):
 def convert_name(s, s_length=1):
     s = s.lower()
     res = ""
-    for i in range(0, s_length - 1):
-        if s[i] in dictionary:
-            res += translate_that_shit(s[i])
+    if s_length == 1:
+        if s[0] in dictionary:
+            res += translate_that_shit(s[0])
         else:
-            res += s[i]
+            res += s[0]
+    else:
+        for i in range(0, s_length - 1):
+            if s[i] in dictionary:
+                res += translate_that_shit(s[i])
+            else:
+                res += s[i]
     return res

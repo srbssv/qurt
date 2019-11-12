@@ -86,11 +86,13 @@ if len(ChangedClass_List)>0:
     fill_data(ChangedClass_List, 2, x, sheet)
     filename = input("Название файла с переведенными между классами:")
     write_to_csv(ChangedClass_List, filename)
-
-# Сохраняем в общий Excel-файл
-xl_out.save("STUDENTS_DETAILED.xlsx")
-xl_out.close()
-print("Таблица с изменениями в ActiveDirectory и Контингенте сохранены в файле STUDENTS_DETAILED.xlsx")
-# Сохраняем все это счастье в CSV-файлы
+if (len(Absent_List)==0) and (len(Exported_List)==0) and (len(ChangedClass_List)==0):
+    print("Нечего сохранять")
+else:
+    # Сохраняем в общий Excel-файл
+    xl_out.save("STUDENTS_DETAILED.xlsx")
+    xl_out.close()
+    print("Таблица с изменениями в ActiveDirectory и Контингенте сохранены в файле STUDENTS_DETAILED.xlsx")
+    # Сохраняем все это счастье в CSV-файлы
 print("Ешь курт!")
 u = input("Нажми Enter, и вали отсюда")
